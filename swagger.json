@@ -1,0 +1,297 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "Pet and Tutor API",
+      "version": "1.0.0",
+      "description": "API for managing pets and their tutors"
+  },
+  "paths": {
+      "/pet/{tutorId}": {
+          "post": {
+              "summary": "Create a new Pet",
+              "parameters": [
+                  {
+                      "name": "tutorId",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "weight": {
+                                      "type": "string"
+                                  },
+                                  "breed": {
+                                      "type": "string"
+                                  },
+                                  "species": {
+                                      "type": "string"
+                                  },
+                                  "date_of_birth": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Pet created successfully"
+                  },
+                  "400": {
+                      "description": "Invalid input"
+                  }
+              }
+          }
+      },
+      "/pet": {
+          "get": {
+              "summary": "Get all Pets",
+              "responses": {
+                  "200": {
+                      "description": "A list of pets",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "name": {
+                                              "type": "string"
+                                          },
+                                          "species": {
+                                              "type": "string"
+                                          },
+                                          "weight": {
+                                              "type": "integer"
+                                          },
+                                          "date_of_birth": {
+                                              "type": "string"
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/pet/{id}/tutor/{tutorId}": {
+          "put": {
+              "summary": "Update a Pet",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  },
+                  {
+                      "name": "tutorId",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "age": {
+                                      "type": "integer"
+                                  },
+                                  "breed": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Pet updated successfully"
+                  },
+                  "404": {
+                      "description": "Pet not found"
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Delete a Pet",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  },
+                  {
+                      "name": "tutorId",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Pet deleted successfully"
+                  },
+                  "404": {
+                      "description": "Pet not found"
+                  }
+              }
+          }
+      },
+      "/tutor": {
+          "post": {
+              "summary": "Create a new Tutor",
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "email": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Tutor created successfully"
+                  },
+                  "400": {
+                      "description": "Invalid input"
+                  }
+              }
+          },
+          "get": {
+              "summary": "Get all Tutors",
+              "responses": {
+                  "200": {
+                      "description": "A list of tutors",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "id": {
+                                              "type": "string"
+                                          },
+                                          "name": {
+                                              "type": "string"
+                                          },
+                                          "email": {
+                                              "type": "string"
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/tutor/{id}": {
+          "put": {
+              "summary": "Update a Tutor",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "email": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Tutor updated successfully"
+                  },
+                  "404": {
+                      "description": "Tutor not found"
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Delete a Tutor",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Tutor deleted successfully"
+                  },
+                  "404": {
+                      "description": "Tutor not found"
+                  }
+              }
+          }
+      }
+  }
+}
