@@ -1,14 +1,14 @@
 {
   "openapi": "3.0.0",
   "info": {
-      "title": "Pet and Tutor API",
+      "title": "PetsClinic ",
       "version": "1.0.0",
-      "description": "API for managing pets and their tutors"
+      "description": "API para fazer a busca de tutors e pets"
   },
   "paths": {
       "/pet/{tutorId}": {
           "post": {
-              "summary": "Create a new Pet",
+              "summary": "Cria uma pet",
               "parameters": [
                   {
                       "name": "tutorId",
@@ -48,20 +48,20 @@
               },
               "responses": {
                   "201": {
-                      "description": "Pet created successfully"
+                      "description": "Criado com sucesso"
                   },
                   "400": {
-                      "description": "Invalid input"
+                      "description": "Erro"
                   }
               }
           }
       },
       "/pet": {
           "get": {
-              "summary": "Get all Pets",
+              "summary": "Get Pets",
               "responses": {
                   "200": {
-                      "description": "A list of pets",
+                      "description": "Listando pets",
                       "content": {
                           "application/json": {
                               "schema": {
@@ -92,7 +92,7 @@
       },
       "/pet/{id}/tutor/{tutorId}": {
           "put": {
-              "summary": "Update a Pet",
+              "summary": "Atualizando Pet",
               "parameters": [
                   {
                       "name": "id",
@@ -134,15 +134,15 @@
               },
               "responses": {
                   "200": {
-                      "description": "Pet updated successfully"
+                      "description": "Atualizado"
                   },
                   "404": {
-                      "description": "Pet not found"
+                      "description": "Err"
                   }
               }
           },
           "delete": {
-              "summary": "Delete a Pet",
+              "summary": "Deletando Pet",
               "parameters": [
                   {
                       "name": "id",
@@ -163,17 +163,17 @@
               ],
               "responses": {
                   "200": {
-                      "description": "Pet deleted successfully"
+                      "description": "Deletado"
                   },
                   "404": {
-                      "description": "Pet not found"
+                      "description": "Err"
                   }
               }
           }
       },
       "/tutor": {
           "post": {
-              "summary": "Create a new Tutor",
+              "summary": "Criando tutor",
               "requestBody": {
                   "required": true,
                   "content": {
@@ -194,18 +194,18 @@
               },
               "responses": {
                   "201": {
-                      "description": "Tutor created successfully"
+                      "description": "Criado com sucesso"
                   },
                   "400": {
-                      "description": "Invalid input"
+                      "description": "Err"
                   }
               }
           },
           "get": {
-              "summary": "Get all Tutors",
+              "summary": "Get  tutors",
               "responses": {
                   "200": {
-                      "description": "A list of tutors",
+                      "description": "Listando tutors",
                       "content": {
                           "application/json": {
                               "schema": {
@@ -233,7 +233,7 @@
       },
       "/tutor/{id}": {
           "put": {
-              "summary": "Update a Tutor",
+              "summary": "Atualizando tutor",
               "parameters": [
                   {
                       "name": "id",
@@ -264,15 +264,15 @@
               },
               "responses": {
                   "200": {
-                      "description": "Tutor updated successfully"
+                      "description": "Atualizado"
                   },
                   "404": {
-                      "description": "Tutor not found"
+                      "description": "Err"
                   }
               }
           },
           "delete": {
-              "summary": "Delete a Tutor",
+              "summary": "Deletando Tutor",
               "parameters": [
                   {
                       "name": "id",
@@ -285,10 +285,10 @@
               ],
               "responses": {
                   "200": {
-                      "description": "Tutor deleted successfully"
+                      "description": "Tutor deletado"
                   },
                   "404": {
-                      "description": "Tutor not found"
+                      "description": "Err"
                   }
               }
           }
