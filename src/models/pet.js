@@ -1,7 +1,8 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/batabase");
+const Tutor = require('./tutor')
 
-const pet = sequelize.define("pet", {
+const Pet = sequelize.define('Pet', {
   name: {
     type: DataTypes.STRING,
   },
@@ -21,4 +22,7 @@ const pet = sequelize.define("pet", {
   },
 });
 
-module.exports = pet;
+Tutor.hasMany(Pet, {foreignKey:'tutorId'});
+Pet.belongsTo(Tutor,{foreignKey:'tutorId'});
+
+module.exports = Pet;
