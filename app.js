@@ -2,8 +2,10 @@ const express = require("express");
 const tutor = require("./src/routers/tutor");
 const pet = require("./src/routers/pet");
 const sequelize = require("./src/config/batabase");
+const bodyParser = require("body-parser");
 
 const app = express();
+
 
 app.use(express.json());
 
@@ -19,5 +21,7 @@ sequelize
   .catch((err) => {
     console.error("Error syncing database:", err);
   });
+
+
 
 module.exports = app;

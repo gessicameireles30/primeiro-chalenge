@@ -1,4 +1,4 @@
-const tutor = require("../models/tutor");
+const Pet = require("../models/pet");
 const Tutor = require("../models/tutor");
 
 class TutorController {
@@ -6,9 +6,9 @@ class TutorController {
     try {
       const tutor = req.body;
       await Tutor.create(tutor);
-      res.send("Tutor salvo com sucesso!");
+      res.status(201).send("Tutor salvo com sucesso!");
     } catch (error) {
-      res.send("erro ao salvar o tutor");
+      res.status(500).json(err);
     }
   };
 
@@ -18,12 +18,12 @@ class TutorController {
       const tutor = await Tutor.findByPk(id);
       if(tutor){
         await tutor.update(req.body);
-        res.send("Atualizado com sucesso");
+        res.status(201).send("Atualizado com sucesso");
       }else{
-        res.send("Não existe esse tutor!")
+        res.tatus(404).send("Não existe esse tutor!")
       }
     } catch (error) {
-      res.send("Erro, não é possível atualizar!");
+      res.status(500).json(err);
     }
   };
 
@@ -33,21 +33,26 @@ class TutorController {
       await Tutor.destroy({
         where: {id: id}
       });
-      res.send("Tutor deletado com sucesso!")
+      res.status(201).send("Tutor deletado com sucesso!")
     } catch (error) {
-      res.send("Erro ao deletar")
+      res.status(500).json(err)
     }
 
   };
   getAllTutors = async (req, res) => {
-    try {
-      const tutor =  await Tutor.findAll();
-      console.log(tutor);
-      res.json(tutor);
-    } catch (err) {
-      res.send("Erro ao listar");
+    
+      const tutor =  await Tutor.findAll({
+        include: Pet
+      }        
+      ).then(result => {
+        res.json(result);
+      }).catch((err)=>{
+        res.status(500).json(err);
+      });
+      //console.log(tutor);
+      //res.json(tutor);
     }
   };
-}
+
 
 module.exports = new TutorController();

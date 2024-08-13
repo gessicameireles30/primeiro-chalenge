@@ -1,5 +1,6 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../config/batabase");
+const Pet = require("../models/pet");
 
 const tutor = sequelize.define("tutor", {
   name: {
