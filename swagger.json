@@ -1,0 +1,297 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "title": "PetsClinic ",
+      "version": "1.0.0",
+      "description": "API para fazer a busca de tutors e pets"
+  },
+  "paths": {
+      "/pet/{tutorId}": {
+          "post": {
+              "summary": "Cria uma pet",
+              "parameters": [
+                  {
+                      "name": "tutorId",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "weight": {
+                                      "type": "string"
+                                  },
+                                  "breed": {
+                                      "type": "string"
+                                  },
+                                  "species": {
+                                      "type": "string"
+                                  },
+                                  "date_of_birth": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Criado com sucesso"
+                  },
+                  "400": {
+                      "description": "Erro"
+                  }
+              }
+          }
+      },
+      "/pet": {
+          "get": {
+              "summary": "Get Pets",
+              "responses": {
+                  "200": {
+                      "description": "Listando pets",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "name": {
+                                              "type": "string"
+                                          },
+                                          "species": {
+                                              "type": "string"
+                                          },
+                                          "weight": {
+                                              "type": "integer"
+                                          },
+                                          "date_of_birth": {
+                                              "type": "string"
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/pet/{id}/tutor/{tutorId}": {
+          "put": {
+              "summary": "Atualizando Pet",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  },
+                  {
+                      "name": "tutorId",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "age": {
+                                      "type": "integer"
+                                  },
+                                  "breed": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Atualizado"
+                  },
+                  "404": {
+                      "description": "Err"
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Deletando Pet",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  },
+                  {
+                      "name": "tutorId",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Deletado"
+                  },
+                  "404": {
+                      "description": "Err"
+                  }
+              }
+          }
+      },
+      "/tutor": {
+          "post": {
+              "summary": "Criando tutor",
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "email": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "201": {
+                      "description": "Criado com sucesso"
+                  },
+                  "400": {
+                      "description": "Err"
+                  }
+              }
+          },
+          "get": {
+              "summary": "Get  tutors",
+              "responses": {
+                  "200": {
+                      "description": "Listando tutors",
+                      "content": {
+                          "application/json": {
+                              "schema": {
+                                  "type": "array",
+                                  "items": {
+                                      "type": "object",
+                                      "properties": {
+                                          "id": {
+                                              "type": "string"
+                                          },
+                                          "name": {
+                                              "type": "string"
+                                          },
+                                          "email": {
+                                              "type": "string"
+                                          }
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+              }
+          }
+      },
+      "/tutor/{id}": {
+          "put": {
+              "summary": "Atualizando tutor",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "requestBody": {
+                  "required": true,
+                  "content": {
+                      "application/json": {
+                          "schema": {
+                              "type": "object",
+                              "properties": {
+                                  "name": {
+                                      "type": "string"
+                                  },
+                                  "email": {
+                                      "type": "string"
+                                  }
+                              }
+                          }
+                      }
+                  }
+              },
+              "responses": {
+                  "200": {
+                      "description": "Atualizado"
+                  },
+                  "404": {
+                      "description": "Err"
+                  }
+              }
+          },
+          "delete": {
+              "summary": "Deletando Tutor",
+              "parameters": [
+                  {
+                      "name": "id",
+                      "in": "path",
+                      "required": true,
+                      "schema": {
+                          "type": "string"
+                      }
+                  }
+              ],
+              "responses": {
+                  "200": {
+                      "description": "Tutor deletado"
+                  },
+                  "404": {
+                      "description": "Err"
+                  }
+              }
+          }
+      }
+  }
+}
